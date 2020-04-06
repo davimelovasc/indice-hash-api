@@ -10,4 +10,12 @@ public class Global {
 	public static Pagina[] paginas;
 	public static Bucket[] buckets;
 
+	public static int getChaveDeBusca(String termo) {
+		for (int i = 0; i < tabela.getTuplas().length; i++) {
+			if(termo.equals(tabela.getTuplas()[i].getPalavra())) {
+				return tabela.getTuplas()[i].getChaveDeBusca();
+			}
+		}
+		return -1;
+	}
 }

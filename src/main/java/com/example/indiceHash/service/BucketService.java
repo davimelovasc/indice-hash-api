@@ -6,6 +6,8 @@ import java.util.Set;
 import org.springframework.stereotype.Service;
 
 import com.example.indiceHash.entity.Bucket;
+import com.example.indiceHash.entity.Pagina;
+import com.example.indiceHash.entity.Tupla;
 import com.example.indiceHash.util.FuncaoHash;
 import com.example.indiceHash.util.Global;
 
@@ -28,6 +30,17 @@ public class BucketService {
 		for (Integer bucketId : colecaoSet) {
 			Global.buckets[bucketId] = new Bucket(bucketId, tamanhoBucket);
 		}
+		
+		// Insere as tuplas nos buckets
+		for(Pagina p : Global.paginas) {
+			for(Tupla t : p.getTuplas()) {
+				if( t != null) {
+					Integer bId = FuncaoHash.getBuketId(t.getChaveDeBusca());
+					Global.buckets[bId].insert(t.getChaveDeBusca(), p.getEndereco());
+				}
+			}
+		}
+		
 		return Global.buckets;
 	}
 }

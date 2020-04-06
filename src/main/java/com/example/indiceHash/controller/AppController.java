@@ -1,5 +1,7 @@
 package com.example.indiceHash.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.indiceHash.entity.Bucket;
 import com.example.indiceHash.entity.Pagina;
 import com.example.indiceHash.entity.Tupla;
+import com.example.indiceHash.service.AppService;
 import com.example.indiceHash.service.BucketService;
 import com.example.indiceHash.service.PaginaService;
 import com.example.indiceHash.service.TuplaService;
@@ -25,6 +28,9 @@ public class AppController {
 	
 	@Autowired
 	private BucketService bucketService;
+	
+	@Autowired
+	private AppService appService;
 	
 	
 	@GetMapping("/")
@@ -43,7 +49,8 @@ public class AppController {
 	}
 	
 	@GetMapping("/serch")
-	public void search(@RequestParam(name="term") String termo) {
-
+	public ResponseEntity<Map<String, String>> search(@RequestParam(name="term") String termo) {
+		return new ResponseEntity<Map<String, String>>(appService.search(termo), HttpStatus.OK);
+		
 	}
 }
