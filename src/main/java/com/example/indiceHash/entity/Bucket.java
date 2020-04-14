@@ -57,9 +57,10 @@ public class Bucket {
 	}	
 	
 	public int getSizeColisoes() {
-		if(this.bucket != null) {
-			return chavePagina.size() - 1 + bucket.getSizeColisoes();
-		}
+		/*
+		 * if(this.bucket != null) { return chavePagina.size() - 1 +
+		 * bucket.getSizeColisoes(); }
+		 */
 		return chavePagina.size() - 1;
 	}
 	

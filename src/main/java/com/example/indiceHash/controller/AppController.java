@@ -48,7 +48,7 @@ public class AppController {
 		return new ResponseEntity<Bucket[]>(bucketService.generateBuckets(), HttpStatus.OK);
 	}
 	
-	@GetMapping("/serch")
+	@GetMapping("/search")
 	public ResponseEntity<Map<String, String>> search(@RequestParam(name="term") String termo) {
 		return new ResponseEntity<Map<String, String>>(appService.search(termo), HttpStatus.OK);
 		

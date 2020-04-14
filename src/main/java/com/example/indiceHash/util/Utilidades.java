@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.example.indiceHash.entity.Bucket;
 import com.example.indiceHash.entity.Pagina;
 import com.example.indiceHash.entity.Tabela;
 import com.example.indiceHash.entity.Tupla;
@@ -108,14 +109,15 @@ public class Utilidades {
 			}
 			posTuplas += qtd_tuplas_pagina;
 		}
-		System.out.println(paginas.length);
-		System.out.println(paginas[0].getTuplas().length);
-		System.out.println(paginas[1].getTuplas().length);
-		System.out.println(paginas[2].getTuplas().length);
-		
-		
-		// TODO
 		return paginas;
+	}
+	
+	public static Bucket getBucketByEndereco(int endereco) {
+		for (int i = 0; i < Global.buckets.length; i++) {
+			if(Global.buckets[i].getEndereco() == endereco)
+				return Global.buckets[i];
+		}
+		return null;
 	}
 	
 	
