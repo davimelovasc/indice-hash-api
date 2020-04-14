@@ -5,9 +5,8 @@ public class FuncaoHash {
 	// Ap�s isso, inserir em um conjunto que implementa a interface(interface Set do Java).
 	// Gerado todos os ids dos buckets, aplicar fun��o de lenght. No max buckets de tamanho 1000;
 	public static int getBuketId(int chaveBusca) {
-		String s = "teste";
-		int a = s.hashCode() ^ 11;
-		return chaveBusca % 11; // TODO
+		int test = chaveBusca ^ "abc".hashCode();
+		return test % Global.paginas[0].getTuplas().length; // TODO
 	}
 	
 	// Test hash

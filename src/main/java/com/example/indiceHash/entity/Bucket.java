@@ -2,6 +2,8 @@ package com.example.indiceHash.entity;
 
 import java.util.HashMap;
 
+import com.example.indiceHash.util.Global;
+
 public class Bucket {
 	private int endereco;
 	
@@ -44,6 +46,7 @@ public class Bucket {
 			// OVERFLOW 
 			if(this.bucket == null) {
 				this.bucket = new Bucket(endereco, tamanho);
+				Global.qtdOverflow += 1;
 			}
 			this.bucket.insert(chaveBusca, enderecoPagina);
 		}else {
@@ -51,10 +54,13 @@ public class Bucket {
 		}
 		
 		
+	}	
+	
+	public int getSizeColisoes() {
+		if(this.bucket != null) {
+			return chavePagina.size() - 1 + bucket.getSizeColisoes();
+		}
+		return chavePagina.size() - 1;
 	}
-	
-	
-	
-	
 	
 }

@@ -21,7 +21,6 @@ public class BucketService {
 			int bucketId = FuncaoHash.getBuketId(Global.tabela.getTuplas()[i].getChaveDeBusca());
 			colecaoSet.add(bucketId);
 		}
-		
 		int qtdeBuckets = colecaoSet.size();
 		int tamanhoBucket = Global.tabela.getTuplas().length/qtdeBuckets;
 		System.out.println("qtdeBuckets: " + qtdeBuckets);
@@ -40,7 +39,7 @@ public class BucketService {
 				}
 			}
 		}
-		
+		Global.calcularColisoes();
 		return Global.buckets;
 	}
 }

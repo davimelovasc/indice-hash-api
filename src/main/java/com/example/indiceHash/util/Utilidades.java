@@ -91,11 +91,31 @@ public class Utilidades {
 	
 	public static Pagina[] gerarPaginasPorQtdPaginas(Tabela tabela, Integer qtdPaginas) {
 		Pagina[] paginas;
-		
+		Tupla[] tuplas;
 		int qtd_tuplas_pagina = tabela.getTuplas().length/qtdPaginas;
+		if(tabela.getTuplas().length%qtd_tuplas_pagina != 0) {
+			qtd_tuplas_pagina++;
+		}
+		
+		paginas = new Pagina[qtdPaginas];
+		tuplas = tabela.getTuplas();
+		int posTuplas = 0;
+		for(int j = 0; j < qtdPaginas; j++) {
+			paginas[j] = new Pagina(j, qtd_tuplas_pagina);
+			for(int i = 0; i < qtd_tuplas_pagina; i++) {
+				if(posTuplas + i >= tuplas.length) break;
+					paginas[j].addTupla(tuplas[posTuplas + i]);
+			}
+			posTuplas += qtd_tuplas_pagina;
+		}
+		System.out.println(paginas.length);
+		System.out.println(paginas[0].getTuplas().length);
+		System.out.println(paginas[1].getTuplas().length);
+		System.out.println(paginas[2].getTuplas().length);
+		
 		
 		// TODO
-		return null;
+		return paginas;
 	}
 	
 	

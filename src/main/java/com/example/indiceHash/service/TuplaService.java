@@ -11,6 +11,7 @@ public class TuplaService {
 	
 
 	public Tupla[] gerarTuplas() throws Exception {
+		Global.reset();
 		Tupla[] tuplas = Utilidades.gerarTuplas(Utilidades.trasnformarArquivoEmList("words.txt"));
 		Global.tabela.setTuplas(tuplas);
 		return tuplas;

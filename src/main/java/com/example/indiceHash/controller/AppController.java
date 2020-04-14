@@ -53,4 +53,9 @@ public class AppController {
 		return new ResponseEntity<Map<String, String>>(appService.search(termo), HttpStatus.OK);
 		
 	}
+	
+	@GetMapping("/get-stats")
+	public ResponseEntity<Map<String, String>> getStats() {
+		return new ResponseEntity<Map<String, String>>(appService.getStats(), HttpStatus.OK);
+	}
 }

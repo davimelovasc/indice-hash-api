@@ -21,6 +21,7 @@ public class AppService {
 			if(page != null) {
 				result.put("bucket_number", String.valueOf(Global.buckets[i].getEndereco()));
 				result.put("page_number", String.valueOf(page));
+				result.put("cb", String.valueOf(cb));
 				break;
 			}
 		}
@@ -40,5 +41,17 @@ public class AppService {
 			return page_id;
 		}
 		return null;
+	}
+
+
+	public Map<String, String> getStats() {
+		Map<String, String> stats = new HashMap<>();
+		double taxaOverflow = (double) Global.qtdOverflow / (double) Global.buckets.length;
+		taxaOverflow *= 100;
+		
+		double taxaColisao = Global.taxaColisao * 100;
+		stats.put("taxaColisao", String.valueOf((int) taxaColisao));
+		stats.put("taxaOverflow", String.valueOf((int)taxaOverflow));
+		return stats;
 	}
 }
