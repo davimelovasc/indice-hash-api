@@ -14,34 +14,34 @@ import com.example.indiceHash.entity.Tupla;
 
 public class Utilidades {
 
-	public static List<String> trasnformarArquivoEmList(String arquivo) throws Exception {
-		List<String> palavras = new ArrayList<>();
-		BufferedReader br = new BufferedReader(new FileReader(arquivo));
-		String linha;
-		while (br.ready()) {
-			linha = br.readLine();
-			palavras.add(linha);
-		}
-		br.close();
-		return palavras;
-	}
+//	public static List<String> trasnformarArquivoEmList(String arquivo) throws Exception {
+//		List<String> palavras = new ArrayList<>();
+//		BufferedReader br = new BufferedReader(new FileReader(arquivo));
+//		String linha;
+//		while (br.ready()) {
+//			linha = br.readLine();
+//			palavras.add(linha);
+//		}
+//		br.close();
+//		return palavras;
+//	}
 
 
-	public static Tupla[] gerarTuplas(List<String> palavras) {
-		Random rand = new Random();
-		List<Integer> idsDisponiveis = new ArrayList<Integer>();
-		for(int i = 1; i <= palavras.size(); i++) {
-			idsDisponiveis.add(i);
-        }
-		
-		Tupla[] tuplas = new Tupla[palavras.size()];
-		for(int i = 0; i < tuplas.length; i++) {
-			int id = rand.nextInt(idsDisponiveis.size());
-			tuplas[i] = new Tupla(idsDisponiveis.remove(id), palavras.get(i));
-        }
-
-		return tuplas;
-	}
+//	public static Tupla[] gerarTuplas(List<String> palavras) {
+//		Random rand = new Random();
+//		List<Integer> idsDisponiveis = new ArrayList<Integer>();
+//		for(int i = 1; i <= palavras.size(); i++) {
+//			idsDisponiveis.add(i);
+//        }
+//		
+//		Tupla[] tuplas = new Tupla[palavras.size()];
+//		for(int i = 0; i < tuplas.length; i++) {
+//			int id = rand.nextInt(idsDisponiveis.size());
+//			tuplas[i] = new Tupla(idsDisponiveis.remove(id), palavras.get(i));
+//        }
+//
+//		return tuplas;
+//	}
 	
 //	
 //	public static void printBuckets(Bucket[] buckets) {

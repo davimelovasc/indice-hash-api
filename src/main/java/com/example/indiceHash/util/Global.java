@@ -1,14 +1,26 @@
 package com.example.indiceHash.util;
 
 import com.example.indiceHash.entity.Bucket;
+import com.example.indiceHash.entity.Empregado;
 import com.example.indiceHash.entity.Pagina;
 import com.example.indiceHash.entity.Tabela;
 
 public class Global {
 	
-	public static Tabela tabela = new Tabela("tabela01", null);
+	public static Empregado[] empregados;
+	
+	
+	public static Tabela tabela_empregado = null;
+	public static Tabela tabela_dependente = null;
+	public static Tabela tabela_departamento = null;
+	
 	public static Pagina[] paginas;
 	public static Bucket[] buckets;
+	
+	
+	public static final String EMPREGADO_TABLE_NAME = "Empregado";
+	public static final String DEPENDENTE_TABLE_NAME = "Dependente";
+	public static final String DEPARTAMENTO_TABLE_NAME = "Departamento";
 	
 	
 	// Stats
@@ -19,7 +31,7 @@ public class Global {
 	
 	public static int acessoDisco = 0;
 
-	public static int getChaveDeBusca(String termo) {
+	public static int getChaveDeBusca(Tabela tabela, String termo) {
 		for (int i = 0; i < tabela.getTuplas().length; i++) {
 			if(termo.equals(tabela.getTuplas()[i].getPalavra())) {
 				return tabela.getTuplas()[i].getChaveDeBusca();
@@ -52,7 +64,9 @@ public class Global {
 		acessoDisco = 0;
 		tamBucket = 0;
 		qtdBuckets = 0;
-		tabela = new Tabela("tabela01", null);
+		tabela_empregado = null;
+		tabela_dependente = null;
+		tabela_departamento = null;
 		paginas = null;
 		buckets = null;
 	}
