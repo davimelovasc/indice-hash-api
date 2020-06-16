@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,8 +42,6 @@ public class AppController {
 	
 	@GetMapping("/")
 	public ResponseEntity<Tupla[]> index() throws Exception {
-		Parser p = new Parser();
-		p.parse("select nome, idade from funcionario where idade > 20 and idade < 59;");
 		return new ResponseEntity<Tupla[]>(tuplaService.gerarTuplas(), HttpStatus.OK);
 	}
 	
@@ -51,6 +50,11 @@ public class AppController {
 		System.out.println(query);
 		Parser p = new Parser();
 		return new ResponseEntity<>(p.parse(query), HttpStatus.OK);
+	}
+	
+	@GetMapping("/table/{table_name}")
+	public ResponseEntity<Tabela> getTable(@PathVariable(name = "table_name") String tableName) {
+		return new ResponseEntity<>(appService.getTable(tableName), HttpStatus.OK);
 	}
 	
 	@GetMapping("/init")

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.example.indiceHash.entity.Bucket;
+import com.example.indiceHash.entity.Tabela;
 import com.example.indiceHash.util.FuncaoHash;
 import com.example.indiceHash.util.Global;
 import com.example.indiceHash.util.Utilidades;
@@ -29,6 +30,19 @@ public class AppService {
 		}
 		Global.acessoDisco = 0;
 		return result;
+	}
+	
+	public Tabela getTable(String tableName) {
+		switch (tableName) {
+		case "Empregado":
+			return Global.tabela_empregado;
+		case "departamento":
+			return Global.tabela_departamento;
+		case "dependente":
+			return Global.tabela_dependente;
+		default:
+			return null;
+		}
 	}
 	
 	
