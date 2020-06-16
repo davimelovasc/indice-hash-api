@@ -119,6 +119,16 @@ public class Utilidades {
 		}
 		return null;
 	}
+
+	public static void filter(String[][] result, String[] campos) {
+		String[][] newResult = new String[campos.length][1000];
+		for(int i=0; i < campos.length; i++) {
+			newResult[0][i] = campos[i];
+		}
+		
+	
+		
+	}
 	
 	
 
